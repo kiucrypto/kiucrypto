@@ -93,41 +93,51 @@
             z-index: 2;
         }
 
-        /* CONTENEDOR DE LA MONEDA MÁS GRANDE CON ARO DE FUEGO CIRCULAR */
+        /* MONEDA BIEN GRANDE Y EFECTO GALAXIA GIRATORIA DETRÁS */
         .coin-container {
             position: relative;
-            width: 175px;
-            height: 175px;
+            width: 210px;
+            height: 210px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 10px auto;
+            margin: 15px auto;
         }
 
-        .coin-ring {
+        .coin-galaxy-ring {
             position: absolute;
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 3px dashed transparent;
-            border-top-color: #ff3300;
-            border-right-color: #ff9900;
-            border-bottom-color: #ffcc00;
-            box-shadow: 0 0 25px rgba(255, 100, 0, 0.6), inset 0 0 15px rgba(255, 204, 0, 0.4);
-            animation: fuego-circular 2s linear infinite;
+            background: conic-gradient(from 0deg, #ff0055, #ffcc00, #00ffff, #9900ff, #ff0055);
+            box-shadow: 0 0 35px rgba(255, 204, 0, 0.5), 0 0 60px rgba(153, 0, 255, 0.3);
+            animation: girar-galaxia 4s linear infinite;
+            filter: blur(4px);
+            opacity: 0.85;
         }
 
-        @keyframes fuego-circular {
+        @keyframes girar-galaxia {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
+        /* Fondo oscuro interno para que el efecto de galaxia no tape la moneda por dentro */
+        .coin-container::after {
+            content: '';
+            position: absolute;
+            width: 182px;
+            height: 182px;
+            background-color: #000000;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
         .coin-img {
-            width: 145px;
-            height: 145px;
+            width: 175px;
+            height: 175px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 0 35px rgba(255, 150, 0, 0.5);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
             border: 3px solid #ffcc00;
             position: relative;
             z-index: 2;
@@ -261,4 +271,73 @@
             font-family: 'Cinzel', serif;
             font-size: 1rem;
             color: #ffcc00;
-            letter-spacing: 2px
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .footer-copy {
+            color: #a0aec0;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        @media (min-width: 768px) {
+            main { max-width: 700px; padding: 20px 20px 50px 20px; gap: 35px; }
+            .coin-container { width: 240px; height: 240px; }
+            .coin-container::after { width: 206px; height: 206px; }
+            .coin-img { width: 200px; height: 200px; }
+            .title-kiu { font-size: 3rem; }
+            .info-card { padding: 30px; gap: 20px; }
+            .top-domain { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="crypto-bg"></div>
+    <div class="watermark-text">KIU</div>
+
+    <header>
+        <div class="top-domain">kiucrypto.com</div>
+    </header>
+
+    <main>
+        <div class="coin-container">
+            <div class="coin-galaxy-ring"></div>
+            <img src="https://i.imgur.com/XZnHroZ.jpg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
+        </div>
+
+        <div class="title-section">
+            <h1 class="title-kiu">Kiu Crypto</h1>
+            <div class="project-status">⚡ August 2026 / Project Under Active Development</div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-block">
+                <span class="info-label">Project Overview</span>
+                <p class="info-value">Kiu Crypto is an innovative next-generation digital asset engineered on the high-speed Solana blockchain. Currently under active core development, our ecosystem focuses on elite security, decentralized utility, and long-term asset growth.</p>
+            </div>
+
+            <div class="founder-block">
+                <span class="info-label">Founder & Creator</span>
+                <h2 class="founder-name-text">Lenox JG</h2>
+            </div>
+
+            <div class="buttons-container">
+                <a href="https://solscan.io/token/7yUSJwN2UNroicnUTgoMEsekh8sbFtYg7puVHnfy3qLb" target="_blank" class="btn-buy-kiu">
+                    🚀 Buy Kiu Crypto
+                </a>
+                <a href="https://solscan.io/token/7yUSJwN2UNroicnUTgoMEsekh8sbFtYg7puVHnfy3qLb" target="_blank" class="btn-solscan">
+                    View on Solscan
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-domain">kiucrypto.com</div>
+        <p class="footer-copy">&copy; 2026 Kiu Crypto. All rights reserved. Luxury Defined.</p>
+    </footer>
+</body>
+</html>
