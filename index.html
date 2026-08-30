@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* FONDO CON BURBUJAS EN MOVIMIENTO */
+        /* FONDO GENERAL DE BURBUJAS */
         .crypto-bg {
             position: fixed;
             top: 0;
@@ -34,18 +34,17 @@
             height: 100%;
             background-color: #000000;
             background-image: 
-                radial-gradient(rgba(255, 90, 90, 0.4) 2.5px, transparent 2.5px),
-                radial-gradient(rgba(255, 120, 120, 0.25) 4px, transparent 4px),
-                radial-gradient(rgba(255, 204, 0, 0.15) 1.5px, transparent 1.5px);
-            background-size: 80px 80px, 140px 140px, 40px 40px;
-            background-position: 0 0, 40px 40px, 20px 20px;
+                radial-gradient(rgba(255, 90, 90, 0.35) 2px, transparent 2px),
+                radial-gradient(rgba(255, 204, 0, 0.2) 1.5px, transparent 1.5px);
+            background-size: 70px 70px, 35px 35px;
+            background-position: 0 0, 15px 15px;
             z-index: -3;
-            animation: mover-burbujas 25s linear infinite;
+            animation: mover-burbujas 20s linear infinite;
         }
 
         @keyframes mover-burbujas {
-            0% { background-position: 0 0, 40px 40px, 20px 20px; }
-            100% { background-position: 0 160px, 140px 200px, 40px 120px; }
+            0% { background-position: 0 0, 15px 15px; }
+            100% { background-position: 0 140px, 15px 95px; }
         }
 
         /* MARCA DE AGUA "KIU" */
@@ -93,54 +92,48 @@
             z-index: 2;
         }
 
-        /* MONEDA BIEN GRANDE Y EFECTO GALAXIA GIRATORIA DETRÁS */
+        /* CONTENEDOR DE LA MONEDA CON ANILLO GALÁCTICO SEGURO Y Fluido */
         .coin-container {
             position: relative;
-            width: 210px;
-            height: 210px;
+            width: 190px;
+            height: 190px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 15px auto;
         }
 
+        /* Anillo giratorio de energía/galaxia optimizado para móviles */
         .coin-galaxy-ring {
             position: absolute;
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, #ff0055, #ffcc00, #00ffff, #9900ff, #ff0055);
-            box-shadow: 0 0 35px rgba(255, 204, 0, 0.5), 0 0 60px rgba(153, 0, 255, 0.3);
-            animation: girar-galaxia 4s linear infinite;
-            filter: blur(4px);
-            opacity: 0.85;
+            border: 4px dashed transparent;
+            border-top-color: #ff0055;
+            border-right-color: #00ffff;
+            border-bottom-color: #ffcc00;
+            border-left-color: #9900ff;
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.4), 0 0 40px rgba(0, 255, 255, 0.2);
+            animation: girar-anillo 6s linear infinite;
         }
 
-        @keyframes girar-galaxia {
+        @keyframes girar-anillo {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        /* Fondo oscuro interno para que el efecto de galaxia no tape la moneda por dentro */
-        .coin-container::after {
-            content: '';
-            position: absolute;
-            width: 182px;
-            height: 182px;
-            background-color: #000000;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
+        /* Imagen de la criptomoneda grande y perfectamente visible */
         .coin-img {
-            width: 175px;
-            height: 175px;
+            width: 155px;
+            height: 155px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
             border: 3px solid #ffcc00;
             position: relative;
             z-index: 2;
+            background-color: #111;
         }
 
         .title-section {
@@ -283,11 +276,11 @@
             letter-spacing: 0.5px;
         }
 
+        /* AJUSTES PARA COMPUTADORAS / PANTALLAS GRANDES */
         @media (min-width: 768px) {
             main { max-width: 700px; padding: 20px 20px 50px 20px; gap: 35px; }
-            .coin-container { width: 240px; height: 240px; }
-            .coin-container::after { width: 206px; height: 206px; }
-            .coin-img { width: 200px; height: 200px; }
+            .coin-container { width: 220px; height: 220px; }
+            .coin-img { width: 180px; height: 180px; }
             .title-kiu { font-size: 3rem; }
             .info-card { padding: 30px; gap: 20px; }
             .top-domain { font-size: 1.3rem; }
