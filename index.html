@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* FONDO GENERAL DE BURBUJAS */
+        /* FONDO GENERAL */
         .crypto-bg {
             position: fixed;
             top: 0;
@@ -92,48 +92,60 @@
             z-index: 2;
         }
 
-        /* CONTENEDOR DE LA MONEDA CON ANILLO GALÁCTICO SEGURO Y Fluido */
+        /* CONTENEDOR DE LA MONEDA */
         .coin-container {
             position: relative;
-            width: 190px;
-            height: 190px;
+            width: 220px;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 15px auto;
         }
 
-        /* Anillo giratorio de energía/galaxia optimizado para móviles */
-        .coin-galaxy-ring {
+        /* 1. LOS COLORES TIPO GALAXIA/ARCOÍRIS PERMANENTES ATRÁS DE LA MONEDA */
+        .coin-galaxy-bg {
+            position: absolute;
+            width: 175px;
+            height: 175px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #ff0055, #ffcc00, #00ffff, #9900ff, #ff0055);
+            filter: blur(14px);
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        /* 2. EL ARO EXTERIOR QUE DA VUELTAS DE COLOR ROJO LLAMATIVO */
+        .coin-red-ring {
             position: absolute;
             width: 100%;
             height: 100%;
             border-radius: 50%;
             border: 4px dashed transparent;
-            border-top-color: #ff0055;
-            border-right-color: #00ffff;
-            border-bottom-color: #ffcc00;
-            border-left-color: #9900ff;
-            box-shadow: 0 0 25px rgba(255, 204, 0, 0.4), 0 0 40px rgba(0, 255, 255, 0.2);
-            animation: girar-anillo 6s linear infinite;
+            border-top-color: #ff0033;
+            border-right-color: #ff3366;
+            border-bottom-color: #ff0000;
+            border-left-color: #ff4d4d;
+            box-shadow: 0 0 30px rgba(255, 0, 51, 0.8), inset 0 0 15px rgba(255, 0, 51, 0.5);
+            animation: girar-rojo 5s linear infinite;
+            z-index: 3;
         }
 
-        @keyframes girar-anillo {
+        @keyframes girar-rojo {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        /* Imagen de la criptomoneda grande y perfectamente visible */
+        /* 3. IMAGEN DE LA MONEDA BIEN GRANDE Y CENTRADA */
         .coin-img {
-            width: 155px;
-            height: 155px;
+            width: 175px;
+            height: 175px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
             border: 3px solid #ffcc00;
             position: relative;
             z-index: 2;
-            background-color: #111;
         }
 
         .title-section {
@@ -276,11 +288,11 @@
             letter-spacing: 0.5px;
         }
 
-        /* AJUSTES PARA COMPUTADORAS / PANTALLAS GRANDES */
         @media (min-width: 768px) {
             main { max-width: 700px; padding: 20px 20px 50px 20px; gap: 35px; }
-            .coin-container { width: 220px; height: 220px; }
-            .coin-img { width: 180px; height: 180px; }
+            .coin-container { width: 250px; height: 250px; }
+            .coin-galaxy-bg { width: 200px; height: 200px; }
+            .coin-img { width: 200px; height: 200px; }
             .title-kiu { font-size: 3rem; }
             .info-card { padding: 30px; gap: 20px; }
             .top-domain { font-size: 1.3rem; }
@@ -297,7 +309,11 @@
 
     <main>
         <div class="coin-container">
-            <div class="coin-galaxy-ring"></div>
+            <!-- Fondo de colores galaxia detrás de la moneda -->
+            <div class="coin-galaxy-bg"></div>
+            <!-- El aro exterior giratorio en rojo llamativo -->
+            <div class="coin-red-ring"></div>
+            <!-- La moneda grande y nítida -->
             <img src="https://i.imgur.com/XZnHroZ.jpg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
         </div>
 
