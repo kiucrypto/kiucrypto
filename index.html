@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiu Crypto</title>
+    <title>Kiu Crypto | Official Project</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,7 +15,6 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 204, 0, 0.15);
             --glass-blur: blur(15px);
-            --watermark-color: rgba(255, 50, 50, 0.07);
         }
 
         * {
@@ -37,7 +36,7 @@
             position: relative;
         }
 
-        /* FONDO CON PUNTOS ROJOS EN MOVIMIENTO */
+        /* FONDO PROFESIONAL: MARCA DE AGUA "KIU" + PUNTOS ROJOS EN MOVIMIENTO Y PARPADEO */
         .crypto-bg {
             position: fixed;
             top: 0;
@@ -45,20 +44,28 @@
             width: 100%;
             height: 100%;
             background-color: var(--bg-deep);
+            
+            /* SVG incrustado como marca de agua repetida "KIU" en blanco muy transparente + puntos */
             background-image: 
-                linear-gradient(45deg, transparent 25%, var(--watermark-color) 25%, var(--watermark-color) 50%, transparent 50%, transparent 75%, var(--watermark-color) 75%, var(--watermark-color)),
-                linear-gradient(-45deg, transparent 25%, var(--watermark-color) 25%, var(--watermark-color) 50%, transparent 50%, transparent 75%, var(--watermark-color) 75%, var(--watermark-color)),
-                radial-gradient(rgba(255, 50, 50, 0.25) 1.5px, transparent 1.5px),
-                radial-gradient(rgba(200, 20, 20, 0.15) 1px, transparent 1px);
-            background-size: 220px 220px, 220px 220px, 60px 40px, 30px 30px;
-            background-position: 0 0, 110px 110px, 0 0, 15px 15px;
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Cinzel, serif' font-size='24' font-weight='800' fill='rgba(255,255,255,0.025)'%3EKIU%3C/text%3E%3C/svg%3E"),
+                radial-gradient(rgba(255, 60, 60, 0.35) 1.8px, transparent 1.8px),
+                radial-gradient(rgba(220, 20, 20, 0.2) 1.2px, transparent 1.2px);
+            
+            background-size: 180px 180px, 70px 70px, 35px 35px;
+            background-position: 0 0, 0 0, 15px 15px;
             z-index: -3;
-            animation: mover-fondo 25s linear infinite;
+            animation: mover-fondo 40s linear infinite, parpadear-puntos 4s ease-in-out infinite alternate;
         }
 
         @keyframes mover-fondo {
-            from { background-position: 0 0, 110px 110px, 0 0, 15px 15px; }
-            to { background-position: 0 220px, 110px 330px, 60px 400px, 30px 315px; }
+            from { background-position: 0 0, 0 0, 15px 15px; }
+            to { background-position: 180px 180px, 350px 350px, 175px 175px; }
+        }
+
+        @keyframes parpadear-puntos {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; filter: drop-shadow(0 0 4px rgba(255, 50, 50, 0.6)); }
+            100% { opacity: 0.6; }
         }
 
         .ambient-light {
@@ -68,7 +75,7 @@
             transform: translate(-50%, -50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(255, 204, 0, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.06) 0%, transparent 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -198,146 +205,3 @@
         .founder-block {
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            text-align: left;
-            border-top: 1px solid var(--card-border);
-            padding-top: 15px;
-        }
-
-        .founder-name-text {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: var(--accent-gold);
-            font-weight: 700;
-        }
-
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        /* BOTÓN DE COMPRA LLAMATIVO Y EN MOVIMIENTO */
-        .btn-buy-kiu {
-            display: inline-block;
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #ffcc00, #ff9900);
-            color: #000000;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 0 25px rgba(255, 204, 0, 0.6);
-            animation: latido 2s infinite;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .btn-buy-kiu:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 0 40px rgba(255, 204, 0, 0.9);
-        }
-
-        @keyframes latido {
-            0% { box-shadow: 0 0 15px rgba(255, 204, 0, 0.4); }
-            50% { box-shadow: 0 0 30px rgba(255, 204, 0, 0.8); }
-            100% { box-shadow: 0 0 15px rgba(255, 204, 0, 0.4); }
-        }
-
-        .btn-solscan {
-            display: inline-block;
-            width: 100%;
-            padding: 14px;
-            background: transparent;
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .btn-solscan:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.3);
-        }
-
-        footer {
-            width: 100%;
-            padding: 30px 20px;
-            text-align: center;
-            border-top: 1px solid var(--card-border);
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: var(--glass-blur);
-        }
-
-        .footer-domain {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            color: var(--accent-gold);
-            letter-spacing: 3px;
-            text-transform: lowercase;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .footer-copy {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-    </style>
-</head>
-<body>
-    <div class="crypto-bg"></div>
-    <div class="ambient-light"></div>
-
-    <header>
-        <div class="top-domain">kiucrypto.com</div>
-    </header>
-
-    <main>
-        <div class="coin-container">
-            <div class="coin-ring"></div>
-            <img src="https://i.imgur.com/XZnHroZ.jpg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
-        </div>
-
-        <div class="title-section">
-            <h1 class="title-kiu">Kiu Crypto</h1>
-            <div class="project-status">⚡ August 2026 / Project Under Active Development</div>
-        </div>
-
-        <div class="info-card">
-            <div class="info-block">
-                <span class="info-label">Project Overview</span>
-                <p class="info-value">A next-generation high-value digital asset built on the Solana blockchain, engineered with elite security and automated utility.</p>
-            </div>
-
-            <div class="founder-block">
-                <span class="info-label">Founder & Creator</span>
-                <h2 class="founder-name-text">Lenox JG</h2>
-            </div>
-
-            <div class="buttons-container">
-                <a href="https://solscan.io/token/7yUSJwN2UNroicnUTgoMEsekh8sbFtYg7puVHnfy3qLb" target="_blank" class="btn-buy-kiu">
-                    🚀 Buy Kiu Crypto
-                </a>
-                <a href="https://solscan.io/token/7yUSJwN2UNroicnUTgoMEsekh8sbFtYg7puVHnfy3qLb" target="_blank" class="btn-solscan">
-                    View on Solscan
-                </a>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-domain">kiucrypto.com</div>
-        <p class="footer-copy">&copy; 2026 Kiu Crypto. All rights reserved. Luxury Defined.</p>
-    </footer>
-</body>
-</html>
