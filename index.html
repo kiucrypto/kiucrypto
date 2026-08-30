@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* FONDO PROFESIONAL: NEGRO CON GALAXIA SUTIL Y PUNTOS ROJOS/DORADOS EN MOVIMIENTO */
+        /* FONDO: NEGRO PROFUNDO CON GALAXIA SUTIL Y PUNTOS ROJOS Y DORADOS EN MOVIMIENTO */
         .crypto-bg {
             position: fixed;
             top: 0;
@@ -36,8 +36,8 @@
             background-image: 
                 radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.12) 0%, transparent 45%),
                 radial-gradient(circle at 80% 70%, rgba(0, 168, 204, 0.1) 0%, transparent 45%),
-                radial-gradient(rgba(255, 0, 60, 0.25) 2.5px, transparent 2.5px),
-                radial-gradient(rgba(255, 204, 0, 0.22) 3.5px, transparent 3.5px);
+                radial-gradient(rgba(255, 0, 60, 0.3) 2.5px, transparent 2.5px),
+                radial-gradient(rgba(255, 204, 0, 0.25) 3.5px, transparent 3.5px);
             background-size: 100% 100%, 100% 100%, 70px 70px, 110px 110px;
             background-position: 0 0, 0 0, 0 0, 40px 40px;
             z-index: -3;
@@ -47,23 +47,6 @@
         @keyframes mover-puntos {
             0% { background-position: 0 0, 0 0, 0 0, 40px 40px; }
             100% { background-position: 0 0, 0 0, 0 140px, 110px 150px; }
-        }
-
-        /* MARCA DE AGUA "KIU" ELEGANTE DE FONDO */
-        .watermark-text {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Cinzel', serif;
-            font-size: 22vw;
-            font-weight: 800;
-            color: rgba(255, 255, 255, 0.015);
-            z-index: -2;
-            pointer-events: none;
-            user-select: none;
-            text-align: center;
-            width: 100%;
         }
 
         header {
@@ -85,7 +68,7 @@
 
         main {
             width: 100%;
-            max-width: 550px;
+            max-width: 650px;
             padding: 10px 20px 40px 20px;
             display: flex;
             flex-direction: column;
@@ -93,6 +76,48 @@
             text-align: center;
             gap: 25px;
             z-index: 2;
+        }
+
+        /* CONTENEDOR CENTRAL (INCLUYE MONEDA Y TEXTOS A LOS COSTADOS) */
+        .coin-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 15px auto;
+        }
+
+        /* TEXTOS LATERALES QUE SE APAGAN Y PRENDEN (PARPADEO) */
+        .side-text-left, .side-text-right {
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: parpadear 1.8s ease-in-out infinite;
+            z-index: 5;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .side-text-left {
+            left: 2%;
+            color: #ffcc00;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.8), 0 0 30px rgba(255, 153, 0, 0.5);
+        }
+
+        .side-text-right {
+            right: 2%;
+            color: #ff0055;
+            text-shadow: 0 0 15px rgba(255, 0, 85, 0.8), 0 0 30px rgba(255, 0, 51, 0.5);
+            animation-delay: 0.9s; /* Alterna el parpadeo con el otro lado */
+        }
+
+        @keyframes parpadear {
+            0%, 100% { opacity: 0.15; transform: scale(0.98); }
+            50% { opacity: 1; transform: scale(1.02); }
         }
 
         /* CONTENEDOR DE LA MONEDA Y SUS EFECTOS MULTICAPA */
@@ -103,7 +128,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 10px auto;
         }
 
         /* 1. Fondo de colores galaxia detrás de la cripto */
@@ -246,7 +270,7 @@
             letter-spacing: 1px;
         }
 
-        /* BOTONES DE LLAMADA A LA ACCIÓN LLAMATIVOS */
+        /* BOTONES DE LLAMADA A LA ACCIÓN */
         .buttons-container {
             display: flex;
             flex-direction: column;
@@ -323,14 +347,21 @@
             letter-spacing: 0.5px;
         }
 
-        /* ADAPTABILIDAD PERFECTA EN PANTALLAS GRANDES / COMPUTADORAS */
+        /* RESPONSIVO PARA MOVILES (Ajusta los textos a los lados para que no se salgan) */
+        @media (max-width: 600px) {
+            .side-text-left { font-size: 1.2rem; left: 1%; }
+            .side-text-right { font-size: 1.2rem; right: 1%; }
+        }
+
         @media (min-width: 768px) {
-            main { max-width: 650px; padding: 20px 20px 50px 20px; gap: 35px; }
+            main { max-width: 700px; padding: 20px 20px 50px 20px; gap: 35px; }
             .coin-container { width: 270px; height: 270px; }
             .coin-galaxy-bg { width: 205px; height: 205px; }
             .coin-yellow-ring { width: 230px; height: 230px; }
             .coin-img { width: 200px; height: 200px; }
             .title-kiu { font-size: 3.2rem; }
+            .side-text-left { font-size: 2.5rem; left: 5%; }
+            .side-text-right { font-size: 2.5rem; right: 5%; }
             .info-card { padding: 35px; gap: 22px; }
             .top-domain { font-size: 1.3rem; }
         }
@@ -338,18 +369,26 @@
 </head>
 <body>
     <div class="crypto-bg"></div>
-    <div class="watermark-text">KIU</div>
 
     <header>
         <div class="top-domain">kiucrypto.com</div>
     </header>
 
     <main>
-        <div class="coin-container">
-            <div class="coin-galaxy-bg"></div>
-            <div class="coin-yellow-ring"></div>
-            <div class="coin-red-ring"></div>
-            <img src="https://i.imgur.com/XZnHroZ.jpg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
+        <div class="coin-wrapper">
+            <!-- Texto izquierdo que se apaga y prende -->
+            <div class="side-text-left">KIU</div>
+
+            <!-- Contenedor central de la moneda y anillos giratorios -->
+            <div class="coin-container">
+                <div class="coin-galaxy-bg"></div>
+                <div class="coin-yellow-ring"></div>
+                <div class="coin-red-ring"></div>
+                <img src="https://i.imgur.com/XZnHroZ.jpg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
+            </div>
+
+            <!-- Texto derecho que se apaga y prende -->
+            <div class="side-text-right">CRYPTO</div>
         </div>
 
         <div class="title-section">
