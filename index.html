@@ -51,7 +51,7 @@
 
         header {
             width: 100%;
-            padding: 25px 20px;
+            padding: 22px 20px;
             text-align: center;
             z-index: 2;
         }
@@ -69,12 +69,12 @@
         main {
             width: 100%;
             max-width: 650px;
-            padding: 10px 20px 40px 20px;
+            padding: 5px 20px 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 25px;
+            gap: 22px;
             z-index: 2;
         }
 
@@ -85,14 +85,13 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            margin: 15px auto;
+            margin: 10px auto;
         }
 
         /* TEXTOS LATERALES QUE SE APAGAN Y PRENDEN (PARPADEO) */
         .side-text-left, .side-text-right {
             position: absolute;
             font-family: 'Cinzel', serif;
-            font-size: 2rem;
             font-weight: 800;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -103,16 +102,14 @@
         }
 
         .side-text-left {
-            left: 2%;
             color: #ffcc00;
             text-shadow: 0 0 15px rgba(255, 204, 0, 0.8), 0 0 30px rgba(255, 153, 0, 0.5);
         }
 
         .side-text-right {
-            right: 2%;
             color: #ff0055;
             text-shadow: 0 0 15px rgba(255, 0, 85, 0.8), 0 0 30px rgba(255, 0, 51, 0.5);
-            animation-delay: 0.9s; /* Alterna el parpadeo con el otro lado */
+            animation-delay: 0.9s;
         }
 
         @keyframes parpadear {
@@ -123,8 +120,8 @@
         /* CONTENEDOR DE LA MONEDA Y SUS EFECTOS MULTICAPA */
         .coin-container {
             position: relative;
-            width: 240px;
-            height: 240px;
+            width: 230px;
+            height: 230px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -133,8 +130,8 @@
         /* 1. Fondo de colores galaxia detrás de la cripto */
         .coin-galaxy-bg {
             position: absolute;
-            width: 175px;
-            height: 175px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             background: conic-gradient(from 0deg, #ff0055, #ffcc00, #00ffff, #9900ff, #ff0055);
             filter: blur(14px);
@@ -145,8 +142,8 @@
         /* 2. Aro interior amarillo giratorio */
         .coin-yellow-ring {
             position: absolute;
-            width: 200px;
-            height: 200px;
+            width: 195px;
+            height: 195px;
             border-radius: 50%;
             border: 3px dashed #ffcc00;
             box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
@@ -178,8 +175,8 @@
 
         /* 4. Imagen principal de la moneda */
         .coin-img {
-            width: 175px;
-            height: 175px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
@@ -191,13 +188,13 @@
         .title-section {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             width: 100%;
         }
 
         .title-kiu {
             font-family: 'Cinzel', serif;
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: 2px;
             color: #ffffff;
@@ -206,12 +203,12 @@
         }
 
         .project-status {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: #ffcc00;
             letter-spacing: 1px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 204, 0, 0.25);
-            padding: 7px 16px;
+            padding: 6px 14px;
             border-radius: 30px;
             display: inline-block;
             margin: 0 auto;
@@ -225,11 +222,11 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 204, 0, 0.2);
-            border-radius: 20px;
-            padding: 24px;
+            border-radius: 18px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 16px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             text-align: left;
         }
@@ -237,11 +234,11 @@
         .info-block {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
         }
 
         .info-label {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 2.5px;
             color: #a0aec0;
@@ -249,8 +246,8 @@
         }
 
         .info-value {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.92rem;
+            line-height: 1.5;
             color: #e2e8f0;
         }
 
@@ -259,12 +256,12 @@
             flex-direction: column;
             gap: 4px;
             border-top: 1px solid rgba(255, 204, 0, 0.2);
-            padding-top: 14px;
+            padding-top: 12px;
         }
 
         .founder-name-text {
             font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: #ffcc00;
             font-weight: 700;
             letter-spacing: 1px;
@@ -274,57 +271,46 @@
         .buttons-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 5px;
+            gap: 10px;
+            margin-top: 4px;
             width: 100%;
         }
 
         .btn-buy-kiu {
             display: block;
             width: 100%;
-            padding: 15px;
+            padding: 14px;
             background: linear-gradient(135deg, #ffcc00, #ff9900);
             color: #000000;
             text-decoration: none;
             border-radius: 12px;
             font-weight: 800;
-            font-size: 1rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             text-align: center;
             box-shadow: 0 0 25px rgba(255, 204, 0, 0.4);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .btn-buy-kiu:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(255, 204, 0, 0.7);
         }
 
         .btn-solscan {
             display: block;
             width: 100%;
-            padding: 13px;
+            padding: 12px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 204, 0, 0.4);
             color: #ffcc00;
             text-decoration: none;
             border-radius: 12px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-align: center;
-            transition: background 0.2s ease;
-        }
-
-        .btn-solscan:hover {
-            background: rgba(255, 204, 0, 0.1);
         }
 
         footer {
             width: 100%;
-            padding: 22px;
+            padding: 20px;
             text-align: center;
             border-top: 1px solid rgba(255, 204, 0, 0.2);
             background: rgba(0, 0, 0, 0.95);
@@ -333,36 +319,40 @@
 
         .footer-domain {
             font-family: 'Cinzel', serif;
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: #ffcc00;
             letter-spacing: 2px;
             text-transform: lowercase;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             font-weight: 600;
         }
 
         .footer-copy {
             color: #a0aec0;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             letter-spacing: 0.5px;
         }
 
-        /* RESPONSIVO PARA MOVILES (Ajusta los textos a los lados para que no se salgan) */
+        /* CONFIGURACIÓN PARA IPHONE Y MÓVILES PEQUEÑOS (Comodidad visual y profesional) */
         @media (max-width: 600px) {
-            .side-text-left { font-size: 1.2rem; left: 1%; }
-            .side-text-right { font-size: 1.2rem; right: 1%; }
+            .side-text-left { font-size: 1rem; left: 2%; }
+            .side-text-right { font-size: 1rem; right: 2%; }
         }
 
+        /* CONFIGURACIÓN PARA LAPTOP Y TABLETS (Letras laterales más alejadas y elegantes) */
         @media (min-width: 768px) {
-            main { max-width: 700px; padding: 20px 20px 50px 20px; gap: 35px; }
-            .coin-container { width: 270px; height: 270px; }
-            .coin-galaxy-bg { width: 205px; height: 205px; }
-            .coin-yellow-ring { width: 230px; height: 230px; }
-            .coin-img { width: 200px; height: 200px; }
-            .title-kiu { font-size: 3.2rem; }
-            .side-text-left { font-size: 2.5rem; left: 5%; }
-            .side-text-right { font-size: 2.5rem; right: 5%; }
-            .info-card { padding: 35px; gap: 22px; }
+            main { max-width: 750px; padding: 20px; gap: 30px; }
+            .coin-container { width: 260px; height: 260px; }
+            .coin-galaxy-bg { width: 190px; height: 190px; }
+            .coin-yellow-ring { width: 220px; height: 220px; }
+            .coin-img { width: 190px; height: 190px; }
+            .title-kiu { font-size: 3rem; }
+            
+            /* Textos laterales bien alejados a los extremos en pantallas grandes */
+            .side-text-left { font-size: 2.8rem; left: 2%; }
+            .side-text-right { font-size: 2.8rem; right: 2%; }
+            
+            .info-card { padding: 32px; gap: 20px; }
             .top-domain { font-size: 1.3rem; }
         }
     </style>
@@ -376,10 +366,10 @@
 
     <main>
         <div class="coin-wrapper">
-            <!-- Texto izquierdo que se apaga y prende -->
+            <!-- Texto izquierdo parpadeando -->
             <div class="side-text-left">KIU</div>
 
-            <!-- Contenedor central de la moneda y anillos giratorios -->
+            <!-- Moneda y efectos -->
             <div class="coin-container">
                 <div class="coin-galaxy-bg"></div>
                 <div class="coin-yellow-ring"></div>
@@ -387,7 +377,7 @@
                 <img src="https://i.imgur.com/XZnHroZ.jpg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
             </div>
 
-            <!-- Texto derecho que se apaga y prende -->
+            <!-- Texto derecho parpadeando -->
             <div class="side-text-right">CRYPTO</div>
         </div>
 
