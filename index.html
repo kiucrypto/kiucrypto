@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +15,7 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 204, 0, 0.15);
             --glass-blur: blur(15px);
+            --watermark-color: rgba(255, 255, 255, 0.03); /* Color blanco transparente para el fondo */
         }
 
         * {
@@ -36,18 +37,36 @@
             position: relative;
         }
 
+        /* FONDO CORREGIDO CON MARCA DE AGUA "KIU" */
         .crypto-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000000;
-            background-image: radial-gradient(rgba(255, 50, 50, 0.25) 1.5px, transparent 1.5px),
-                              radial-gradient(rgba(200, 20, 20, 0.15) 1px, transparent 1px);
-            background-size: 60px 40px, 30px 30px;
-            background-position: 0 0, 15px 15px;
-            z-index: -2;
+            background-color: var(--bg-deep);
+            
+            /* Capa de marca de agua con el texto "KIU" */
+            background-image: 
+                linear-gradient(45deg, transparent 25%, var(--watermark-color) 25%, var(--watermark-color) 50%, transparent 50%, transparent 75%, var(--watermark-color) 75%, var(--watermark-color)),
+                linear-gradient(-45deg, transparent 25%, var(--watermark-color) 25%, var(--watermark-color) 50%, transparent 50%, transparent 75%, var(--watermark-color) 75%, var(--watermark-color)),
+                /* Puntos de fondo originales */
+                radial-gradient(rgba(255, 50, 50, 0.25) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(200, 20, 20, 0.15) 1px, transparent 1px);
+            
+            /* Ajuste del patrón de marca de agua para que se repita y sea sutil */
+            background-size: 
+                200px 200px, 
+                200px 200px, 
+                60px 40px, 
+                30px 30px;
+            background-position: 
+                0 0, 
+                100px 100px, 
+                0 0, 
+                15px 15px;
+            z-index: -3; /* Detrás de todo */
+            opacity: 0.8; /* Ligera transparencia global del fondo */
         }
 
         .ambient-light {
@@ -258,7 +277,7 @@
     <main>
         <div class="coin-container">
             <div class="coin-ring"></div>
-            <img src="https://i.imgur.com/XZnHroZ.jpeg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
+            <img src="https://i.imgur.com/XZnHroZ.jpg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
         </div>
 
         <div class="title-section">
@@ -289,4 +308,3 @@
     </footer>
 </body>
 </html>
-        
