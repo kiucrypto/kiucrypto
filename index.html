@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 204, 0, 0.15);
             --glass-blur: blur(15px);
-            --watermark-color: rgba(255, 255, 255, 0.03); /* Color blanco transparente para el fondo */
+            --watermark-color: rgba(255, 50, 50, 0.07);
         }
 
         * {
@@ -37,7 +37,7 @@
             position: relative;
         }
 
-        /* FONDO CORREGIDO CON MARCA DE AGUA "KIU" */
+        /* FONDO CON PUNTOS ROJOS EN MOVIMIENTO */
         .crypto-bg {
             position: fixed;
             top: 0;
@@ -45,28 +45,20 @@
             width: 100%;
             height: 100%;
             background-color: var(--bg-deep);
-            
-            /* Capa de marca de agua con el texto "KIU" */
             background-image: 
                 linear-gradient(45deg, transparent 25%, var(--watermark-color) 25%, var(--watermark-color) 50%, transparent 50%, transparent 75%, var(--watermark-color) 75%, var(--watermark-color)),
                 linear-gradient(-45deg, transparent 25%, var(--watermark-color) 25%, var(--watermark-color) 50%, transparent 50%, transparent 75%, var(--watermark-color) 75%, var(--watermark-color)),
-                /* Puntos de fondo originales */
                 radial-gradient(rgba(255, 50, 50, 0.25) 1.5px, transparent 1.5px),
                 radial-gradient(rgba(200, 20, 20, 0.15) 1px, transparent 1px);
-            
-            /* Ajuste del patrón de marca de agua para que se repita y sea sutil */
-            background-size: 
-                200px 200px, 
-                200px 200px, 
-                60px 40px, 
-                30px 30px;
-            background-position: 
-                0 0, 
-                100px 100px, 
-                0 0, 
-                15px 15px;
-            z-index: -3; /* Detrás de todo */
-            opacity: 0.8; /* Ligera transparencia global del fondo */
+            background-size: 220px 220px, 220px 220px, 60px 40px, 30px 30px;
+            background-position: 0 0, 110px 110px, 0 0, 15px 15px;
+            z-index: -3;
+            animation: mover-fondo 25s linear infinite;
+        }
+
+        @keyframes mover-fondo {
+            from { background-position: 0 0, 110px 110px, 0 0, 15px 15px; }
+            to { background-position: 0 220px, 110px 330px, 60px 400px, 30px 315px; }
         }
 
         .ambient-light {
@@ -219,6 +211,43 @@
             font-weight: 700;
         }
 
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        /* BOTÓN DE COMPRA LLAMATIVO Y EN MOVIMIENTO */
+        .btn-buy-kiu {
+            display: inline-block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ffcc00, #ff9900);
+            color: #000000;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.6);
+            animation: latido 2s infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-buy-kiu:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 40px rgba(255, 204, 0, 0.9);
+        }
+
+        @keyframes latido {
+            0% { box-shadow: 0 0 15px rgba(255, 204, 0, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(255, 204, 0, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(255, 204, 0, 0.4); }
+        }
+
         .btn-solscan {
             display: inline-block;
             width: 100%;
@@ -232,12 +261,11 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-top: 10px;
         }
 
         .btn-solscan:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 204, 0, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.3);
         }
 
         footer {
@@ -296,9 +324,14 @@
                 <h2 class="founder-name-text">Lenox JG</h2>
             </div>
 
-            <a href="https://solscan.io/account/7yUSJwn2UNroicnUTG6MEse77v7C7C8C7eH4Q33qLb" target="_blank" class="btn-solscan">
-                View on Solscan
-            </a>
+            <div class="buttons-container">
+                <a href="https://solscan.io/token/7yUSJwN2UNroicnUTgoMEsekh8sbFtYg7puVHnfy3qLb" target="_blank" class="btn-buy-kiu">
+                    🚀 Buy Kiu Crypto
+                </a>
+                <a href="https://solscan.io/token/7yUSJwN2UNroicnUTgoMEsekh8sbFtYg7puVHnfy3qLb" target="_blank" class="btn-solscan">
+                    View on Solscan
+                </a>
+            </div>
         </div>
     </main>
 
