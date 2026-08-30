@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiu Crypto (KIU) - Official Executive Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #000000;
+            --accent-gold: #ffcc00;
+            --accent-gold-glow: rgba(255, 204, 0, 0.3);
+            --text-main: #ffffff;
+            --text-muted: #a0aec0;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 204, 0, 0.15);
+            --glass-blur: blur(15px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .crypto-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            background-image: radial-gradient(rgba(255, 50, 50, 0.25) 1.5px, transparent 1.5px),
+                              radial-gradient(rgba(200, 20, 20, 0.15) 1px, transparent 1px);
+            background-size: 60px 60px, 30px 30px;
+            background-position: 0 0, 15px 15px;
+            z-index: -2;
+        }
+
+        .ambient-light {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.05) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            width: 100%;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .top-domain {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            text-transform: lowercase;
+            text-shadow: 0 0 20px var(--accent-gold-glow);
+            font-weight: 700;
+        }
+
+        main {
+            width: 100%;
+            max-width: 700px;
+            padding: 10px 20px 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 35px;
+        }
+
+        .coin-container {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            margin: 10px auto;
+            animation: floatCoin 5s ease-in-out infinite;
+        }
+
+        @keyframes floatCoin {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.03); }
+        }
+
+        .coin-ring {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            filter: blur(2px);
+            opacity: 0.4;
+            box-shadow: 0 0 30px var(--accent-gold);
+            animation: pulseRing 5s ease-in-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.05); opacity: 0.6; }
+        }
+
+        .coin-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-gold);
+            box-shadow: 0 0 40px rgba(255, 204, 0, 0.5), inset 0 0 20px rgba(255, 204, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .title-kiu {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 0 30px rgba(255, 204, 0, 0.6), 0 0 60px rgba(255, 204, 0, 0.2);
+        }
+
+        .project-status {
+            display: inline-block;
+            background: rgba(255, 204, 0, 0.1);
+            border: 1px solid var(--card-border);
+            color: var(--accent-gold);
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0 auto;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.2);
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 35px;
+            width: 100%;
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            text-align: left;
+        }
+
+        .info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .info-value {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .founder-block {
+            margin-top: 10px;
+            border-top: 1px solid var(--card-border);
+            padding-top: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .founder-title-text {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .founder-name-text {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-solscan {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            background: linear-gradient(90deg, #ffcc00, #ffdb4d);
+            color: #000000;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 18px;
+            border-radius: 15px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .btn-solscan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 204, 0, 0.5);
+        }
+
+        footer {
+            width: 100%;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .footer-domain {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            letter-spacing: 3px;
+            text-transform: lowercase;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="crypto-bg"></div>
+    <div class="ambient-light"></div>
+
+    <header>
+        <div class="top-domain">kiucrypto.com</div>
+    </header>
+
+    <main>
+        <div class="coin-container">
+            <div class="coin-ring"></div>
+            <img src="kiu.jpg" alt="Kiu Coin" class="coin-img" onerror="this.src='https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=500&auto=format&fit=crop'">
+        </div>
+
+        <div class="title-section">
+            <h1 class="title-kiu">Kiu Crypto</h1>
+            <div class="project-status">⚡ August 2026 / Project Under Active Development</div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-block">
+                <span class="info-label">Project Overview</span>
+                <p class="info-value">A next-generation high-value digital asset built on the Solana blockchain, engineered with elite security and decentralized luxury.</p>
+            </div>
+
+            <div class="founder-block">
+                <span class="founder-title-text">Founder & Creator</span>
+                <h2 class="founder-name-text">Lenox JG</h2>
+            </div>
+
+            <a href="https://solscan.io/account/7yUSJwn2UNroicnUTGoMEse77v7C7C8C7eH4Q33qLb" target="_blank" class="btn-solscan">
+                View on Solscan
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-domain">kiucrypto.com</div>
+        <p class="footer-copy">&copy; 2026 Kiu Crypto. All rights reserved. Luxury Defined.</p>
+    </footer>
+
+</body>
+</html>
