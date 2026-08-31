@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiu Crypto | Stable Official</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Kiu Crypto | Perfect Stable HD</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -11,10 +11,12 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            background-color: #050001;
+            background-color: #020000;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -25,52 +27,58 @@
             position: relative;
         }
 
-        /* FONDO ROJO NEÓN CON ESTRELLAS/PUNTOS EN MOVIMIENTO (100% SEGURO) */
+        /* FONDO ESTELAR HD (OPTIMIZADO PARA CERO FALLOS) */
         .crypto-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.4) 0%, rgba(5, 0, 1, 0.95) 80%),
-                radial-gradient(rgba(255, 0, 51, 0.35) 2px, transparent 2px),
-                radial-gradient(rgba(255, 255, 255, 0.25) 1.5px, transparent 1.5px);
-            background-size: 100% 100%, 70px 70px, 110px 110px;
-            background-position: 0 0, 0 0, 30px 30px;
+            width: 100vw;
+            height: 100vh;
+            background-color: #020000;
+            background-image: 
+                radial-gradient(circle at 50% 40%, rgba(180, 0, 40, 0.3) 0%, transparent 70%),
+                radial-gradient(rgba(255, 0, 60, 0.5) 2px, transparent 2px),
+                radial-gradient(rgba(255, 255, 255, 0.3) 1.2px, transparent 1.2px);
+            background-size: 100% 100%, 80px 80px, 120px 120px;
+            background-position: 0 0, 0 0, 60px 60px;
             z-index: -1;
-            animation: mover-estrellas 15s linear infinite;
+            transform: translateZ(0);
+            will-change: background-position;
+            animation: mover-espacio 35s linear infinite;
         }
 
-        @keyframes mover-estrellas {
-            0% { background-position: 0 0, 0 0, 30px 30px; }
-            100% { background-position: 0 0, 0 140px, 30px 170px; }
+        @keyframes mover-espacio {
+            0% { background-position: 0 0, 0 0, 60px 60px; }
+            100% { background-position: 0 0, 0 160px, 60px 220px; }
         }
 
         header {
             width: 100%;
-            padding: 24px 20px;
+            padding: clamp(15px, 3vh, 25px) 20px;
             text-align: center;
+            z-index: 10;
         }
 
         .top-domain {
             font-family: 'Cinzel', serif;
-            font-size: 1.05rem;
-            letter-spacing: 4px;
-            color: #d1d5db;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            letter-spacing: 5px;
+            color: #e2e8f0;
             text-transform: lowercase;
             font-weight: 600;
+            text-shadow: 0 0 12px rgba(255, 0, 60, 0.6);
         }
 
         main {
             width: 100%;
-            max-width: 650px;
-            padding: 5px 20px 40px 20px;
+            max-width: 600px;
+            padding: 10px 20px 30px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 22px;
+            gap: clamp(16px, 3vw, 22px);
+            z-index: 10;
         }
 
         .coin-wrapper {
@@ -79,37 +87,71 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 550px;
-            margin: 15px auto;
+            margin: 5px auto;
         }
 
+        /* CONTENEDOR DE MONEDA ESTABLE */
         .coin-container {
             position: relative;
-            width: 230px;
-            height: 230px;
+            width: 220px;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transform: translateZ(0);
+        }
+
+        /* Marco Rojo 1 (Gira Derecha) */
+        .ring-red-1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px dashed rgba(255, 0, 60, 0.85);
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.4);
+            animation: girar-derecha 18s linear infinite;
+            will-change: transform;
+        }
+
+        /* Marco Rojo 2 (Gira Izquierda / Contra-rotación) */
+        .ring-red-2 {
+            position: absolute;
+            width: 82%;
+            height: 82%;
+            border-radius: 50%;
+            border: 2px dotted rgba(255, 120, 140, 0.9);
+            animation: girar-izquierda 12s linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes girar-derecha {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes girar-izquierda {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
         }
 
         .coin-galaxy-bg {
             position: absolute;
-            width: 170px;
-            height: 170px;
+            width: 65%;
+            height: 65%;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,0,51,0.8) 0%, rgba(139,0,0,0.4) 70%, transparent 100%);
-            filter: blur(10px);
+            background: radial-gradient(circle, rgba(255,0,51,0.95) 0%, rgba(100,0,20,0.6) 70%, transparent 100%);
+            filter: blur(12px);
         }
 
         .coin-img {
-            width: 170px;
-            height: 170px;
+            width: 65%;
+            height: 65%;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 0 30px rgba(255, 0, 51, 0.7);
+            box-shadow: 0 0 35px rgba(255, 0, 51, 0.8);
             border: 3px solid #ff1a40;
             position: relative;
-            z-index: 2;
+            z-index: 5;
         }
 
         .title-section {
@@ -121,54 +163,56 @@
 
         .title-kiu {
             font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
+            font-size: clamp(2rem, 5vw, 2.4rem);
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             color: #ffffff;
             text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 0, 60, 0.7);
         }
 
         .project-status {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: #ff4d6d;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             background: rgba(255, 0, 51, 0.12);
             border: 1px solid rgba(255, 0, 51, 0.4);
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 30px;
             display: inline-block;
             margin: 0 auto;
+            font-weight: 600;
         }
 
         .info-card {
             width: 100%;
-            background: rgba(15, 5, 8, 0.9);
-            border: 1px solid rgba(255, 0, 51, 0.3);
-            border-radius: 18px;
-            padding: 20px;
+            background: rgba(14, 3, 7, 0.95);
+            border: 1px solid rgba(255, 0, 51, 0.35);
+            border-radius: 20px;
+            padding: clamp(18px, 4vw, 22px);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
             text-align: left;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.9);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.95);
         }
 
         .info-block {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
         }
 
         .info-label {
             font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 2.5px;
-            color: #a0aec0;
+            color: #fca5a5;
             font-weight: 600;
         }
 
         .info-value {
-            font-size: 0.92rem;
+            font-size: clamp(0.85rem, 2vw, 0.92rem);
             line-height: 1.5;
             color: #e5e7eb;
         }
@@ -178,41 +222,41 @@
             flex-direction: column;
             gap: 4px;
             border-top: 1px solid rgba(255, 0, 51, 0.25);
-            padding-top: 12px;
+            padding-top: 10px;
         }
 
-        /* FUNDADOR: AZUL CIAN NEÓN RESALTANTE */
+        /* FUNDADOR: AZUL CIAN NEÓN BRILLANTE */
         .founder-name-text {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
+            font-size: clamp(1.15rem, 2.5vw, 1.25rem);
             color: #38bdf8;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.65);
         }
 
         .buttons-container {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-top: 4px;
+            margin-top: 2px;
             width: 100%;
         }
 
         .btn-buy-kiu {
             display: block;
             width: 100%;
-            padding: 14px;
+            padding: 13px;
             background: linear-gradient(135deg, #e11d48, #9f1239);
             color: #ffffff;
             text-decoration: none;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             text-align: center;
-            box-shadow: 0 0 20px rgba(225, 29, 72, 0.4);
+            box-shadow: 0 0 25px rgba(225, 29, 72, 0.5);
         }
 
         .btn-solscan {
@@ -225,7 +269,7 @@
             text-decoration: none;
             border-radius: 12px;
             font-weight: 600;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-align: center;
@@ -233,25 +277,26 @@
 
         footer {
             width: 100%;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
             border-top: 1px solid rgba(255, 0, 51, 0.25);
-            background: rgba(5, 0, 1, 0.95);
+            background: rgba(2, 0, 0, 0.95);
+            z-index: 10;
         }
 
         .footer-domain {
             font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            color: #d1d5db;
+            font-size: 0.95rem;
+            color: #e2e8f0;
             letter-spacing: 2px;
             text-transform: lowercase;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             font-weight: 600;
         }
 
         .footer-copy {
             color: #9ca3af;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
         }
     </style>
 </head>
@@ -265,6 +310,8 @@
     <main>
         <div class="coin-wrapper">
             <div class="coin-container">
+                <div class="ring-red-1"></div>
+                <div class="ring-red-2"></div>
                 <div class="coin-galaxy-bg"></div>
                 <img src="https://i.imgur.com/XZnHroZ.jpg" alt="Kiu Coin" class="coin-img" onerror="this.style.display='none'" />
             </div>
