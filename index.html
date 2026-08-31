@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Kiu Crypto | Perfect Stable HD</title>
+    <title>Kiu Crypto | Full Background HD</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -15,41 +15,48 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            min-height: 100vh;
             background-color: #020000;
             color: #ffffff;
-            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            overflow-x: hidden;
             position: relative;
         }
 
-        /* FONDO ESTELAR HD (OPTIMIZADO PARA CERO FALLOS) */
+        /* FONDO ESTELAR EXTENDIDO A TODA LA PANTALLA */
         .crypto-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
+            min-width: 100%;
+            min-height: 100%;
             background-color: #020000;
             background-image: 
-                radial-gradient(circle at 50% 40%, rgba(180, 0, 40, 0.3) 0%, transparent 70%),
-                radial-gradient(rgba(255, 0, 60, 0.5) 2px, transparent 2px),
-                radial-gradient(rgba(255, 255, 255, 0.3) 1.2px, transparent 1.2px);
-            background-size: 100% 100%, 80px 80px, 120px 120px;
-            background-position: 0 0, 0 0, 60px 60px;
-            z-index: -1;
+                radial-gradient(circle at 50% 40%, rgba(190, 0, 45, 0.35) 0%, transparent 70%),
+                radial-gradient(rgba(255, 0, 60, 0.75) 2.2px, transparent 2.2px),
+                radial-gradient(rgba(255, 255, 255, 0.55) 1.5px, transparent 1.5px);
+            background-size: 100% 100%, 70px 70px, 100px 100px;
+            background-position: 0 0, 0 0, 50px 50px;
+            z-index: -999;
+            pointer-events: none;
             transform: translateZ(0);
             will-change: background-position;
-            animation: mover-espacio 35s linear infinite;
+            animation: mover-espacio 25s linear infinite;
         }
 
         @keyframes mover-espacio {
-            0% { background-position: 0 0, 0 0, 60px 60px; }
-            100% { background-position: 0 0, 0 160px, 60px 220px; }
+            0% { background-position: 0 0, 0 0, 50px 50px; }
+            100% { background-position: 0 0, 0 140px, 50px 190px; }
         }
 
         header {
@@ -90,7 +97,7 @@
             margin: 5px auto;
         }
 
-        /* CONTENEDOR DE MONEDA ESTABLE */
+        /* CONTENEDOR DE MONEDA CON DOBLE MARCO GIRATORIO */
         .coin-container {
             position: relative;
             width: 220px;
@@ -225,14 +232,16 @@
             padding-top: 10px;
         }
 
-        /* FUNDADOR: AZUL CIAN NEÓN BRILLANTE */
+        /* FUNDADOR: DORADO LUJO BRILLANTE */
         .founder-name-text {
             font-family: 'Cinzel', serif;
             font-size: clamp(1.15rem, 2.5vw, 1.25rem);
-            color: #38bdf8;
+            background: linear-gradient(135deg, #fff2b2 0%, #d4af37 50%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 700;
             letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(56, 189, 248, 0.65);
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
         }
 
         .buttons-container {
