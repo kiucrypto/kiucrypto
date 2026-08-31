@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* FONDO: NEGRO PROFUNDO, GALAXIA SUTIL Y PUNTOS EN MOVIMIENTO */
+        /* FONDO: NEGRO PROFUNDO, GALAXIA Y PUNTOS EN MOVIMIENTO */
         .crypto-bg {
             position: fixed;
             top: 0;
@@ -107,45 +107,41 @@
             z-index: 2;
         }
 
-        /* CONTENEDOR CENTRAL AMPLIADO PARA SEPARAR LOS TEXTOS LATERALES */
+        /* CONTENEDOR CENTRAL DE LA MONEDA */
         .coin-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 550px; /* Expande el espacio lateral en pantallas grandes */
+            max-width: 550px;
             margin: 15px auto;
         }
 
+        /* TEXTOS LATERALES FIJOS, ELEGANTES Y PROFESIONALES (SIN APAGONES) */
         .side-text-left, .side-text-right {
             position: absolute;
             font-family: 'Cinzel', serif;
             font-weight: 800;
             letter-spacing: 3px;
             text-transform: uppercase;
-            animation: parpadear 1.8s ease-in-out infinite;
             z-index: 5;
             pointer-events: none;
             user-select: none;
         }
 
         .side-text-left {
-            left: -20px; /* Bien alejado a la izquierda en PC */
+            left: -20px;
             color: #ffcc00;
-            text-shadow: 0 0 15px rgba(255, 204, 0, 0.8), 0 0 30px rgba(255, 153, 0, 0.5);
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.5), 0 0 40px rgba(255, 153, 0, 0.2);
+            opacity: 0.95;
         }
 
         .side-text-right {
-            right: -20px; /* Bien alejado a la derecha en PC */
+            right: -20px;
             color: #ff0055;
-            text-shadow: 0 0 15px rgba(255, 0, 85, 0.8), 0 0 30px rgba(255, 0, 51, 0.5);
-            animation-delay: 0.9s;
-        }
-
-        @keyframes parpadear {
-            0%, 100% { opacity: 0.15; transform: scale(0.98); }
-            50% { opacity: 1; transform: scale(1.02); }
+            text-shadow: 0 0 20px rgba(255, 0, 85, 0.5), 0 0 40px rgba(255, 0, 51, 0.2);
+            opacity: 0.95;
         }
 
         .coin-container {
@@ -357,26 +353,26 @@
             letter-spacing: 0.5px;
         }
 
-        /* CONFIGURACIÓN PARA MÓVILES (IPHONE) */
+        /* CONFIGURACIÓN PARA MÓVILES (IPHONE): Textos equilibrados sin amontonarse */
         @media (max-width: 600px) {
             .coin-wrapper { max-width: 100%; }
-            .side-text-left { font-size: 1rem; left: 2%; }
-            .side-text-right { font-size: 1rem; right: 2%; }
+            .side-text-left { font-size: 1.1rem; left: 4px; }
+            .side-text-right { font-size: 1.1rem; right: 4px; }
         }
 
-        /* CONFIGURACIÓN PARA LAPTOP Y TABLETS (TEXTOS BIEN ALEJADOS Y FLUIDOS) */
+        /* CONFIGURACIÓN PARA LAPTOP Y TABLETS: Textos alejados y limpios */
         @media (min-width: 768px) {
-            main { max-width: 800px; padding: 20px; gap: 30px; }
-            .coin-wrapper { max-width: 650px; } /* Expande drásticamente el espacio lateral */
+            main { max-width: 820px; padding: 20px; gap: 30px; }
+            .coin-wrapper { max-width: 680px; }
             .coin-container { width: 260px; height: 260px; }
             .coin-galaxy-bg { width: 190px; height: 190px; }
             .coin-yellow-ring { width: 220px; height: 220px; }
             .coin-img { width: 190px; height: 190px; }
             .title-kiu { font-size: 3rem; }
             
-            /* Textos alejados a los extremos exactos */
-            .side-text-left { font-size: 2.8rem; left: -85px; }
-            .side-text-right { font-size: 2.8rem; right: -85px; }
+            /* Textos bien separados y fijos en los extremos */
+            .side-text-left { font-size: 2.8rem; left: -95px; }
+            .side-text-right { font-size: 2.8rem; right: -95px; }
             
             .info-card { padding: 32px; gap: 20px; }
             .top-domain { font-size: 1.2rem; }
