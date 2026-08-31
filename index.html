@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Kiu Crypto | Full Background HD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiu Crypto</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -11,64 +11,46 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        html, body {
-            width: 100%;
-            min-height: 100vh;
-            background-color: #020000;
-            color: #ffffff;
-            overflow-x: hidden;
         }
 
         body {
+            background-color: #020000;
+            color: #ffffff;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* FONDO ESTELAR EXTENDIDO A TODA LA PANTALLA */
-        .crypto-bg {
+        /* CANVAS DE FONDO PARA PUNTOS Y ESTRELLAS EN MOVIMIENTO FLUIDO */
+        #space-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            min-width: 100%;
-            min-height: 100%;
-            background-color: #020000;
-            background-image: 
-                radial-gradient(circle at 50% 40%, rgba(190, 0, 45, 0.35) 0%, transparent 70%),
-                radial-gradient(rgba(255, 0, 60, 0.75) 2.2px, transparent 2.2px),
-                radial-gradient(rgba(255, 255, 255, 0.55) 1.5px, transparent 1.5px);
-            background-size: 100% 100%, 70px 70px, 100px 100px;
-            background-position: 0 0, 0 0, 50px 50px;
-            z-index: -999;
+            z-index: 0;
             pointer-events: none;
-            transform: translateZ(0);
-            will-change: background-position;
-            animation: mover-espacio 25s linear infinite;
+            background: radial-gradient(circle at 50% 40%, rgba(120, 0, 25, 0.4) 0%, #020000 75%);
         }
 
-        @keyframes mover-espacio {
-            0% { background-position: 0 0, 0 0, 50px 50px; }
-            100% { background-position: 0 0, 0 140px, 50px 190px; }
+        header, main, footer {
+            position: relative;
+            z-index: 2;
         }
 
         header {
             width: 100%;
-            padding: clamp(15px, 3vh, 25px) 20px;
+            padding: 20px;
             text-align: center;
-            z-index: 10;
         }
 
         .top-domain {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-size: 1.1rem;
             letter-spacing: 5px;
             color: #e2e8f0;
             text-transform: lowercase;
@@ -84,8 +66,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: clamp(16px, 3vw, 22px);
-            z-index: 10;
+            gap: 20px;
         }
 
         .coin-wrapper {
@@ -97,7 +78,6 @@
             margin: 5px auto;
         }
 
-        /* CONTENEDOR DE MONEDA CON DOBLE MARCO GIRATORIO */
         .coin-container {
             position: relative;
             width: 220px;
@@ -105,10 +85,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: translateZ(0);
         }
 
-        /* Marco Rojo 1 (Gira Derecha) */
         .ring-red-1 {
             position: absolute;
             width: 100%;
@@ -117,10 +95,8 @@
             border: 3px dashed rgba(255, 0, 60, 0.85);
             box-shadow: 0 0 20px rgba(255, 0, 60, 0.4);
             animation: girar-derecha 18s linear infinite;
-            will-change: transform;
         }
 
-        /* Marco Rojo 2 (Gira Izquierda / Contra-rotación) */
         .ring-red-2 {
             position: absolute;
             width: 82%;
@@ -128,7 +104,6 @@
             border-radius: 50%;
             border: 2px dotted rgba(255, 120, 140, 0.9);
             animation: girar-izquierda 12s linear infinite;
-            will-change: transform;
         }
 
         @keyframes girar-derecha {
@@ -170,7 +145,7 @@
 
         .title-kiu {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 2.4rem);
+            font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: 3px;
             color: #ffffff;
@@ -193,10 +168,10 @@
 
         .info-card {
             width: 100%;
-            background: rgba(14, 3, 7, 0.95);
+            background: rgba(14, 3, 7, 0.92);
             border: 1px solid rgba(255, 0, 51, 0.35);
             border-radius: 20px;
-            padding: clamp(18px, 4vw, 22px);
+            padding: 22px;
             display: flex;
             flex-direction: column;
             gap: 14px;
@@ -219,7 +194,7 @@
         }
 
         .info-value {
-            font-size: clamp(0.85rem, 2vw, 0.92rem);
+            font-size: 0.9rem;
             line-height: 1.5;
             color: #e5e7eb;
         }
@@ -232,10 +207,10 @@
             padding-top: 10px;
         }
 
-        /* FUNDADOR: DORADO LUJO BRILLANTE */
+        /* LENOX JG: COLOR DORADO BRILLANTE */
         .founder-name-text {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.15rem, 2.5vw, 1.25rem);
+            font-size: 1.2rem;
             background: linear-gradient(135deg, #fff2b2 0%, #d4af37 50%, #aa771c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -290,7 +265,6 @@
             text-align: center;
             border-top: 1px solid rgba(255, 0, 51, 0.25);
             background: rgba(2, 0, 0, 0.95);
-            z-index: 10;
         }
 
         .footer-domain {
@@ -310,7 +284,8 @@
     </style>
 </head>
 <body>
-    <div class="crypto-bg"></div>
+    <!-- Fondo animado con puntos rojos y destellos estelares -->
+    <canvas id="space-canvas"></canvas>
 
     <header>
         <div class="top-domain">kiucrypto.com</div>
@@ -357,5 +332,72 @@
         <div class="footer-domain">kiucrypto.com</div>
         <p class="footer-copy">&copy; 2026 Kiu Crypto. All rights reserved. Luxury Defined.</p>
     </footer>
+
+    <script>
+        // Script avanzado y ligero para animar puntos rojos y destellos de estrellas sin fallos
+        const canvas = document.getElementById('space-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        const numParticles = 75;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        for (let i = 0; i < numParticles; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2.2 + 0.8,
+                speedY: Math.random() * 0.4 + 0.1,
+                opacity: Math.random(),
+                opacitySpeed: Math.random() * 0.02 + 0.005,
+                isRed: Math.random() > 0.3 // 70% puntos rojos, 30% destellos blancos estelares
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.y -= p.speedY; // Movimiento hacia arriba continuo
+                if (p.y < 0) {
+                    p.y = canvas.height;
+                    p.x = Math.random() * canvas.width;
+                }
+
+                // Efecto de parpadeo/destello suave
+                p.opacity += p.opacitySpeed;
+                if (p.opacity > 1 || p.opacity < 0.2) {
+                    p.opacitySpeed = -p.opacitySpeed;
+                }
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                
+                if (p.isRed) {
+                    ctx.fillStyle = `rgba(255, 0, 60, ${p.opacity})`;
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = '#ff003c';
+                } else {
+                    ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#ffffff';
+                }
+                
+                ctx.fill();
+                ctx.shadowBlur = 0; // Limpiar sombra para optimizar rendimiento
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
 </body>
 </html>
